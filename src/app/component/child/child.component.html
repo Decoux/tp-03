@@ -1,0 +1,62 @@
+
+<div [ngStyle]="{'display': 'flex', 'flex-wrap': 'wrap', 'width': '100%'}">
+    <div class="card" *ngFor="let user of users; let i = index">
+        <div class="cross" (click)="deleteCard(i)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+        </div>
+        <ul>
+
+            <li>Nom : {{user.nom}}</li>
+            <hr>
+            <li>Prénom : {{user.prenom}}</li>
+            <hr>
+            <li>Email : {{user.mail}}</li>
+            <hr>
+            <li>Entreprise: {{user.entreprise}}</li>
+            <hr>
+            <li>Téléphone : {{user.telephone}}</li>
+        </ul>
+    </div>
+    <form (ngSubmit)="submit()" class="form" [formGroup]="formUser">
+        <label for="Nom">
+            Nom : 
+            <input type="text"  formControlName="nom">
+            <p *ngIf="submitted && form['nom'].value.length == 0" class="errors-fields">Ce champ est vide</p>
+    
+            <p *ngIf="submitted && (form['nom'].invalid && form['nom'].value.length > 0)" class="errors-fields">Ce champ est invalide</p>
+        </label>
+        <label for="Prénom">
+            Prénom : 
+            <input type="text" formControlName="prenom">
+            <p *ngIf="submitted && form['prenom'].value.length == 0" class="errors-fields">Ce champ est vide</p>
+    
+            <p *ngIf="submitted && (form['prenom'].invalid && form['prenom'].value.length > 0)" class="errors-fields">Ce champ est invalide</p>
+        </label>
+        <label for="Mail">
+            Mail : 
+            <input type="text" formControlName="mail">
+            <p *ngIf="submitted && form['mail'].value.length == 0" class="errors-fields">Ce champ est vide</p>
+    
+            <p *ngIf="submitted && (form['mail'].invalid && form['mail'].value.length > 0)" class="errors-fields">Ce champ est invalide</p>
+        </label>
+        <label for="Entreprise">
+            Entreprise : 
+            <input type="text" formControlName="entreprise">
+            <p *ngIf="submitted && form['entreprise'].value.length == 0" class="errors-fields">Ce champ est vide</p>
+    
+            <p *ngIf="submitted && (form['entreprise'].invalid && form['entreprise'].value.length > 0)" class="errors-fields">Ce champ est invalide</p>
+        </label>
+        <label for="Téléphone">
+            Téléphone : 
+            <input type="text" formControlName="telephone">
+            <p *ngIf="submitted && form['telephone'].value.length == 0" class="errors-fields">Ce champ est vide</p>
+    
+            <p *ngIf="submitted && (form['telephone'].invalid && form['telephone'].value.length > 0)" class="errors-fields">Ce champ est invalide</p>
+        </label>
+        <div [ngStyle]="{'display': 'flex', 'width': '100%', 'justify-content': 'center'}">
+            <button type="submit" class="btn">Ajouter</button>
+        </div>
+    </form>
+    
+</div>
+
